@@ -1,4 +1,4 @@
-package algo;
+package algo.ds;
 
 
 // https://cp-algorithms.com/data_structures/segment_tree.html

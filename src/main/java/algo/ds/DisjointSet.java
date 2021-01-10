@@ -1,4 +1,4 @@
-package algo;
+package algo.ds;
 
 // https://leetcode.com/problems/largest-component-size-by-common-factor/solution/
 public class DisjointSet {

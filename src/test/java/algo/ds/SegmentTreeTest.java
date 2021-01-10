@@ -1,4 +1,4 @@
-package algo;
+package algo.ds;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
