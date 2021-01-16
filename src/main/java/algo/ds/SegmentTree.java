@@ -1,87 +1,82 @@
 package algo.ds;
 
 
+// http://e-maxx.ru/algo/segment_tree
 // https://cp-algorithms.com/data_structures/segment_tree.html
 public class SegmentTree {
 
-    private int[] t;
-
-    private int[] a;
-
-    private int pos, newVal;
+    private int[] tree;
 
 
-    public void build(int a[]) {
-        t = new int[4 * a.length];
-        this.a = a;
-        build(1, 0, a.length - 1);
+    public void build(int array[]) {
+        tree = new int[4 * array.length];
+
+        build(1, array, 0, array.length - 1);
     }
 
 
-    public int sum(int l, int r) {
-        return sum(1, 0, a.length - 1, l, r);
+    public int sum(int left, int right) {
+        return sum(1, 0, tree.length / 2 - 1, left, right);
     }
 
 
-    public void update(int pos, int newVal) {
-        this.pos = pos;
-        this.newVal = newVal;
-        update(1, 0, a.length - 1);
+    public void update(int arrayIndex, int newVal) {
+        update(1, 0, tree.length / 2 - 1, arrayIndex, newVal);
     }
 
 
-    private void build(int v, int tl, int tr) {
-        if (tl == tr) {
-            t[v] = a[tl];
+    private void build(int index, int array[], int left, int right) {
+        if (left == right) {
+            tree[index] = array[left];
             return;
         }
 
-        int tm = (tl + tr) / 2;
-        int vl = 2 * v;
-        int vr = vl + 1;
+        int middle = left + (right - left) / 2;
+        int leftIndex = 2 * index;
+        int rightIndex = leftIndex + 1;
 
-        build(vl, tl, tm);
-        build(vr, tm + 1, tr);
+        build(leftIndex, array, left, middle);
+        build(rightIndex, array, middle + 1, right);
 
-        t[v] = t[vl] + t[vr];
+        tree[index] = tree[leftIndex] + tree[rightIndex];
     }
 
 
-    private int sum(int v, int tl, int tr, int l, int r) {
-        if (l > r) {
+    private int sum(int index, int left, int right, int intervalLeft, int intervalRight) {
+        if (intervalLeft > intervalRight) {
             return 0;
         }
 
-        if (l == tl && r == tr) {
-            return t[v];
+        if (intervalLeft == left && intervalRight == right) {
+            return tree[index];
         }
 
-        int tm = (tl + tr) / 2;
-        int vl = 2 * v;
-        int vr = vl + 1;
+        int middle = left + (right - left) / 2;
+        int leftIndex = 2 * index;
+        int rightIndex = leftIndex + 1;
 
-        return sum(vl, tl, tm, l, Math.min(r, tm))
-               + sum(vr, tm + 1, tr, Math.max(l, tm + 1), r);
+        return sum(leftIndex, left, middle, intervalLeft, Math.min(intervalRight, middle))
+               + sum(rightIndex, middle + 1, right, Math.max(intervalLeft, middle + 1), intervalRight);
     }
 
 
-    private void update(int v, int tl, int tr) {
-        if (tl == tr) {
-            t[v] = newVal;
+    private void update(int index, int left, int right, int arrayIndex, int newVal) {
+        if (left == right) {
+            tree[index] = newVal;
             return;
         }
 
-        int tm = (tl + tr) / 2;
-        int vl = 2 * v;
-        int vr = vl + 1;
+        int middle = left + (right - left) / 2;
+        int leftIndex = 2 * index;
+        int rightIndex = leftIndex + 1;
 
-        if (pos <= tm) {
-            update(vl, tl, tm);
+        if (arrayIndex <= middle) {
+            update(leftIndex, left, middle, arrayIndex, newVal);
         } else {
-            update(vr, tm + 1, tr);
+            update(rightIndex, middle + 1, right, arrayIndex, newVal);
         }
 
-        t[v] = t[vl] + t[vr];
+        tree[index] = tree[leftIndex] + tree[rightIndex];
     }
 
 }
