@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-class Trie {
+
+public class Trie {
 
     private static class Node {
         boolean isWord;
