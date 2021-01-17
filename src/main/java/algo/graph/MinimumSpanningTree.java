@@ -1,11 +1,16 @@
 package algo.graph;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
+import algo.ds.DisjointSet;
+
 
 // http://e-maxx.ru/algo/mst_prim
+// http://e-maxx.ru/algo/mst_kruskal
+// http://e-maxx.ru/algo/mst_kruskal_with_dsu
 public class MinimumSpanningTree {
 
     // O(V ^ 2)
@@ -50,9 +55,9 @@ public class MinimumSpanningTree {
 
 
     // O(E * log(V))
-    public static int prim2(Map<Integer, List<int[]>> graph, int G) {
-        int[] mins = new int[G];
-        for (int i = 1; i < G; ++ i) {
+    public static int prim2(Map<Integer, List<int[]>> graph, int V) {
+        int[] mins = new int[V];
+        for (int i = 1; i < V; ++ i) {
             mins[i] = Integer.MAX_VALUE;
         }
         // get 0 first
@@ -66,7 +71,7 @@ public class MinimumSpanningTree {
 
         int result = 0;
 
-        for (int i = 0; i < G; ++ i) {
+        for (int i = 0; i < V; ++ i) {
             if (set.isEmpty()) {
                 // not possible to build
                 return -1;
@@ -90,6 +95,26 @@ public class MinimumSpanningTree {
                         set.add(new int[] {mins[to], to});
                     }
                 }
+            }
+        }
+
+        return result;
+    }
+
+
+
+    // O(E * log(V))
+    // graph - {from, to, weight}
+    public static int kruskal(int[][] graph, int V) {
+        Arrays.sort(graph, (p0, p1) -> Integer.compare(p0[2], p1[2]));
+
+        int result = 0;
+        DisjointSet set = new DisjointSet(V);
+
+        for (int[] edge : graph) {
+            if (set.find(edge[0]) != set.find(edge[1])) {
+                set.union(edge[0], edge[1]);
+                result += edge[2];
             }
         }
 

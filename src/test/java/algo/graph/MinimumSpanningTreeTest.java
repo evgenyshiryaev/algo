@@ -9,11 +9,13 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+
 public class MinimumSpanningTreeTest {
 
     @Test
     public void prim1Test() {
         Assertions.assertEquals(0, MinimumSpanningTree.prim1(new int[][] {}));
+
         Assertions.assertEquals(5, MinimumSpanningTree.prim1(new int[][] {{0, 5}, {5, 0}}));
 
         Assertions.assertEquals(5, MinimumSpanningTree.prim1(new int[][]
@@ -40,6 +42,18 @@ public class MinimumSpanningTreeTest {
         graph.computeIfAbsent(2, k -> new ArrayList<>()).add(new int[] {0, 3});
         graph.computeIfAbsent(2, k -> new ArrayList<>()).add(new int[] {1, 4});
         Assertions.assertEquals(5, MinimumSpanningTree.prim2(graph, 3));
+    }
+
+
+
+    @Test
+    public void kruskalTest() {
+        Assertions.assertEquals(0, MinimumSpanningTree.kruskal(new int[][] {}, 0));
+
+        Assertions.assertEquals(5, MinimumSpanningTree.kruskal(new int[][] {{0, 1, 5}}, 2));
+
+        Assertions.assertEquals(5, MinimumSpanningTree.kruskal(new int[][]
+                {{0, 1, 2}, {0, 2, 3}, {1, 2, 4}}, 3));
     }
 
 }

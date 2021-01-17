@@ -24,15 +24,12 @@ public class DisjointSet {
         while (parent[x] != x) {
             x = parent[x];
         }
-
         return parent[x];
     }
 
 
     public int getSize(int x) {
-        int px = find(x);
-
-        return size[px];
+        return size[find(x)];
     }
 
 
@@ -41,9 +38,11 @@ public class DisjointSet {
      * and return the merged component id as the result.
      */
     public int union(int x, int y) {
-        int px = find(x);
-        int py = find(y);
+        return unionParents(find(x), find(y));
+    }
 
+
+    public int unionParents(int px, int py) {
         // the two nodes share the same group
         if (px == py) {
             return px;
