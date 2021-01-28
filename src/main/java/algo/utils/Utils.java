@@ -1,4 +1,4 @@
-package algo;
+package algo.utils;
 
 import java.util.Collection;
 
