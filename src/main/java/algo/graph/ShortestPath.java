@@ -22,25 +22,28 @@ public class ShortestPath {
         dist[start] = 0;
 
         for (int i = 0; i < V; ++ i) {
-            int vertex = -1;
+            int from = -1;
             for (int j = 0; j < V; ++j) {
-                if (!visited[j] && (vertex == -1 || dist[j] < dist[vertex])) {
-                    vertex = j;
+                if (!visited[j] && (from == -1 || dist[j] < dist[from])) {
+                    from = j;
                 }
             }
 
-            if (dist[vertex] == Integer.MAX_VALUE) {
+            if (dist[from] == Integer.MAX_VALUE) {
                 break;
             }
+//            if (from == target) {
+//                break;
+//            }
 
-            visited[vertex] = true;
+            visited[from] = true;
 
-            for (int[] pair : graph[vertex]) {
+            for (int[] pair : graph[from]) {
                 int to = pair[0];
                 int len = pair[1];
-                if (dist[vertex] + len < dist[to]) {
-                    dist[to] = dist[vertex] + len;
-                    parents[to] = vertex;
+                if (dist[from] + len < dist[to]) {
+                    dist[to] = dist[from] + len;
+                    parents[to] = from;
                 }
             }
         }
@@ -68,6 +71,9 @@ public class ShortestPath {
 
         while (!nearest.isEmpty()) {
             int from = nearest.pollFirst();
+//            if (from == target) {
+//                break;
+//            }
 
             for (int[] pair : graph[from]) {
                 int to = pair[0];

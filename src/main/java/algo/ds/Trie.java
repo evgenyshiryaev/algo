@@ -46,10 +46,10 @@ public class Trie {
         Node node = root;
         for (int i = 0; i < word.length(); ++ i) {
             int c = word.charAt(i) - 'a';
-            if (node.childs[c] == null) {
+            node = node.childs[c];
+            if (node == null) {
                 return null;
             }
-            node = node.childs[c];
         }
         return node;
     }
