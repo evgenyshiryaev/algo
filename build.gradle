@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'me.champeau.jmh' version '0.6.4'
 }
 
 repositories {
@@ -13,4 +14,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jmh {
+    benchmarkMode = ['avgt']
+    fork = 1
+    warmupIterations = 1
+    warmup = '10s'
+    iterations = 3
+    timeOnIteration = '10s'
+    timeUnit = 'ms'
 }
