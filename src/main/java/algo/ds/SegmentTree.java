@@ -9,7 +9,7 @@ public class SegmentTree {
 
 
     public void build(int array[]) {
-        tree = new int[4 * array.length];
+        tree = new int[2 * array.length];
 
         build(1, array, 0, array.length - 1);
     }
