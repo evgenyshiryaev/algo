@@ -35,43 +35,43 @@ public class FenwickTree1dTest {
 
     @Test
     public void minTest() {
-        FenwickTree1d t = new FenwickTree1d(FenwickTree1d.Type.MIN, ARRAY);
+        FenwickTree1d tree = new FenwickTree1d(FenwickTree1d.Type.MIN, ARRAY);
 
-        Assertions.assertEquals(1, t.min(0));
-        Assertions.assertEquals(1, t.min(1));
-        Assertions.assertEquals(-2, t.min(2));
-        Assertions.assertEquals(-2, t.min(3));
-        Assertions.assertEquals(-7, t.min(4));
+        Assertions.assertEquals(1, tree.min(0));
+        Assertions.assertEquals(1, tree.min(1));
+        Assertions.assertEquals(-2, tree.min(2));
+        Assertions.assertEquals(-2, tree.min(3));
+        Assertions.assertEquals(-7, tree.min(4));
 
-        t.update(1, 0);
-        t.update(3, -3);
+        tree.update(1, 0);
+        tree.update(3, -3);
 
-        Assertions.assertEquals(1, t.min(0));
-        Assertions.assertEquals(0, t.min(1));
-        Assertions.assertEquals(-2, t.min(2));
-        Assertions.assertEquals(-3, t.min(3));
-        Assertions.assertEquals(-7, t.min(4));
+        Assertions.assertEquals(1, tree.min(0));
+        Assertions.assertEquals(0, tree.min(1));
+        Assertions.assertEquals(-2, tree.min(2));
+        Assertions.assertEquals(-3, tree.min(3));
+        Assertions.assertEquals(-7, tree.min(4));
     }
 
 
     @Test
     public void maxTest() {
-        FenwickTree1d t = new FenwickTree1d(FenwickTree1d.Type.MAX, ARRAY);
+        FenwickTree1d tree = new FenwickTree1d(FenwickTree1d.Type.MAX, ARRAY);
 
-        Assertions.assertEquals(1, t.max(0));
-        Assertions.assertEquals(3, t.max(1));
-        Assertions.assertEquals(3, t.max(2));
-        Assertions.assertEquals(8, t.max(3));
-        Assertions.assertEquals(8, t.max(4));
+        Assertions.assertEquals(1, tree.max(0));
+        Assertions.assertEquals(3, tree.max(1));
+        Assertions.assertEquals(3, tree.max(2));
+        Assertions.assertEquals(8, tree.max(3));
+        Assertions.assertEquals(8, tree.max(4));
 
-        t.update(0, 4);
-        t.update(4, 10);
+        tree.update(0, 4);
+        tree.update(4, 10);
 
-        Assertions.assertEquals(4, t.max(0));
-        Assertions.assertEquals(4, t.max(1));
-        Assertions.assertEquals(4, t.max(2));
-        Assertions.assertEquals(8, t.max(3));
-        Assertions.assertEquals(10, t.max(4));
+        Assertions.assertEquals(4, tree.max(0));
+        Assertions.assertEquals(4, tree.max(1));
+        Assertions.assertEquals(4, tree.max(2));
+        Assertions.assertEquals(8, tree.max(3));
+        Assertions.assertEquals(10, tree.max(4));
     }
 
 }
