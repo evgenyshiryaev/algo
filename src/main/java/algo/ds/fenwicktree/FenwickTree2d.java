@@ -2,7 +2,7 @@ package algo.ds.fenwicktree;
 
 // Fenwick tree (binary indexed tree) for 2d sum.
 // http://e-maxx.ru/algo/fenwick_tree
-public class FenwickTree2dSum {
+public class FenwickTree2d {
 
     private int[][] tree;
 

@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class FenwickTree2dSumTest {
+public class FenwickTree2dTest {
 
     @Test
     public void test() {
-        FenwickTree2dSum t = new FenwickTree2dSum();
+        FenwickTree2d t = new FenwickTree2d();
 
         int[][] a = new int[][] {
                 {1, 3, -2, 8, -7},
