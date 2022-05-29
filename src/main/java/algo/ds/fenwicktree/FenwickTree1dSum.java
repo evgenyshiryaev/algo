@@ -1,8 +1,8 @@
-package algo.ds;
+package algo.ds.fenwicktree;
 
-// binary indexed tree
+// Fenwick tree (binary indexed tree) for 1d sum.
 // http://e-maxx.ru/algo/fenwick_tree
-public class FenwickTree {
+public class FenwickTree1dSum {
 
     private int[] tree;
 

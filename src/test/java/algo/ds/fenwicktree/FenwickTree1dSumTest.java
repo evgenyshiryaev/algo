@@ -1,14 +1,14 @@
-package algo.ds;
+package algo.ds.fenwicktree;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class FenwickTreeTest {
+public class FenwickTree1dSumTest {
 
     @Test
     public void test() {
-        FenwickTree t = new FenwickTree();
+        FenwickTree1dSum t = new FenwickTree1dSum();
 
         int[] a = new int[] {1, 3, -2, 8, -7};
         t.build(a);
