@@ -1,67 +1,52 @@
 package algo.ds;
 
-// https://leetcode.com/problems/largest-component-size-by-common-factor/solution/
+// https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3843/
 public class DisjointSet {
 
-    private final int[] parent;
+    private final int[] root;
 
-    private final int[] size;
+    // height of each vertex
+    private final int[] rank;
 
 
     public DisjointSet(int size) {
-        parent = new int[size + 1];
-        this.size = new int[size + 1];
+        root = new int[size];
+        rank = new int[size];
 
-        for (int i = 0; i < size + 1; ++ i) {
-            parent[i] = i;
-            this.size[i] = 1;
+        for (int i = 0; i < size; ++ i) {
+            root[i] = i;
+            rank[i] = 1;
         }
     }
 
 
-    /** return the component id that the element x belongs to. */
     public int find(int x) {
-        while (parent[x] != x) {
-            x = parent[x];
+        if (x == root[x]) {
+            return x;
         }
-        return parent[x];
+        return root[x] = find(root[x]);
     }
 
 
-    public int getSize(int x) {
-        return size[find(x)];
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+
+        if (rootX != rootY) {
+            if (rank[rootX] > rank[rootY]) {
+                root[rootY] = rootX;
+            } else if (rank[rootX] < rank[rootY]) {
+                root[rootX] = rootY;
+            } else {
+                root[rootY] = rootX;
+                ++ rank[rootX];
+            }
+        }
     }
 
 
-    /**
-     * merge the two components that x, y belongs to respectively,
-     * and return the merged component id as the result.
-     */
-    public int union(int x, int y) {
-        return unionParents(find(x), find(y));
-    }
-
-
-    public int unionParents(int px, int py) {
-        // the two nodes share the same group
-        if (px == py) {
-            return px;
-        }
-
-        // otherwise, connect the two sets (components)
-        if (size[px] > size[py]) {
-            // add the node to the union with less members.
-            // keeping px as the index of the smaller component
-            int temp = px;
-            px = py;
-            py = temp;
-        }
-
-        // add the smaller component to the larger one
-        parent[px] = py;
-        size[py] += size[px];
-
-        return py;
+    public boolean connected(int x, int y) {
+        return find(x) == find(y);
     }
 
 }
