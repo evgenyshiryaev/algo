@@ -13,6 +13,8 @@ public class DisjointSetTest {
         for (int i = 0; i < 5; ++ i) {
             Assertions.assertEquals(i, set.find(i));
         }
+        Assertions.assertEquals(5, set.size());
+
 
         set.union(1, 3);
         set.union(2, 4);
@@ -23,6 +25,9 @@ public class DisjointSetTest {
         Assertions.assertFalse(set.connected(0, 1));
         Assertions.assertFalse(set.connected(0, 2));
 
+        Assertions.assertEquals(3, set.size());
+
+
         set.union(0, 3);
 
         Assertions.assertTrue(set.connected(1, 3));
@@ -31,6 +36,9 @@ public class DisjointSetTest {
         Assertions.assertTrue(set.connected(0, 1));
         Assertions.assertFalse(set.connected(0, 2));
 
+        Assertions.assertEquals(2, set.size());
+
+
         set.union(1, 2);
 
         Assertions.assertTrue(set.connected(0, 1));
@@ -38,6 +46,8 @@ public class DisjointSetTest {
         Assertions.assertTrue(set.connected(2, 3));
         Assertions.assertTrue(set.connected(3, 4));
         Assertions.assertTrue(set.connected(4, 0));
+
+        Assertions.assertEquals(1, set.size());
     }
 
 }

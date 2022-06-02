@@ -8,10 +8,13 @@ public class DisjointSet {
     // height of each vertex
     private final int[] rank;
 
+    private int size;
+
 
     public DisjointSet(int size) {
         root = new int[size];
         rank = new int[size];
+        this.size = size;
 
         for (int i = 0; i < size; ++ i) {
             root[i] = i;
@@ -41,12 +44,19 @@ public class DisjointSet {
                 root[rootY] = rootX;
                 ++ rank[rootX];
             }
+
+            -- size;
         }
     }
 
 
     public boolean connected(int x, int y) {
         return find(x) == find(y);
+    }
+
+
+    public int size() {
+        return size;
     }
 
 }

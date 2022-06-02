@@ -103,7 +103,7 @@ public class MinimumSpanningTree {
 
 
 
-    // O(E * log(V))
+    // O(E * log(E))
     // graph - {from, to, weight}
     public static int kruskal(int[][] graph, int V) {
         Arrays.sort(graph, (p0, p1) -> Integer.compare(p0[2], p1[2]));
@@ -112,9 +112,12 @@ public class MinimumSpanningTree {
         DisjointSet set = new DisjointSet(V);
 
         for (int[] edge : graph) {
-            if (set.find(edge[0]) != set.find(edge[1])) {
+            if (!set.connected(edge[0], edge[1])) {
                 set.union(edge[0], edge[1]);
                 result += edge[2];
+                if (set.size() == 1) {
+                    break;
+                }
             }
         }
 
