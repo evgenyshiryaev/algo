@@ -53,6 +53,7 @@ public class ShortestPath {
 
 
     // O(E * log(V)))
+    // graph - map (vertex - [vertex, weight])
     public static int[] dijkstra2(List<int[]>[] graph, int start) {
         int V = graph.length;
 
@@ -88,6 +89,41 @@ public class ShortestPath {
         }
 
         return dist;
+    }
+
+
+    // O(E * V)
+    // graph - [[from, to, weight]]
+    public static int[] bellmanFord(int[][] graph, int V, int start) {
+        int[] dist = new int[V];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[start] = 0;
+
+//        int[] prev = new int[V];
+//        Arrays.fill(prev, -1);
+
+        // max (V - 1) times if no negative cycle
+        int count = 0;
+        while (true) {
+            boolean anyChange = false;
+
+            for (int[] e : graph) {
+                if (dist[e[0]] != Integer.MAX_VALUE && dist[e[1]] > dist[e[0]] + e[2]) {
+                    dist[e[1]] = dist[e[0]] + e[2];
+//                    prev[e[1]] = e[0];
+                    anyChange = true;
+                }
+            }
+
+            if (!anyChange) {
+                return dist;
+            }
+
+            if (++ count == V) {
+                // negative cycle
+                return null;
+            }
+        }
     }
 
 }
