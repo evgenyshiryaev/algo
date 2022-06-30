@@ -1,6 +1,13 @@
 package algo;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+
 public class Sort {
+
+    private static final Random RANDOM = ThreadLocalRandom.current();
+
 
     // O(n^2)
     public static void insertionSort(int[] arr) {
@@ -75,6 +82,69 @@ public class Sort {
                 arr[ri ++] = i + min;
             }
         }
+    }
+
+
+    // O(n * log(n))
+    public static void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    private static void quickSort(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+
+        int randI = left + RANDOM.nextInt(right - left + 1);
+        int temp = arr[randI];
+        arr[randI] = arr[right];
+        arr[right] = temp;
+
+        int i = left;
+
+        for (int j = left; j <= right; ++ j) {
+            if (arr[j] <= arr[right]) {
+                temp = arr[i];
+                arr[i ++] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        quickSort(arr, left, i - 2);
+        quickSort(arr, i, right);
+    }
+
+
+    // O(n)
+    public static int quickSelect(int[] arr, int k) {
+        return quickSelect(arr, k, 0, arr.length - 1);
+    }
+
+    private static int quickSelect(int[] arr, int k, int left, int right) {
+        if (left == right) {
+            return arr[left];
+        }
+
+        int randI = left + RANDOM.nextInt(right - left + 1);
+        int temp = arr[randI];
+        arr[randI] = arr[right];
+        arr[right] = temp;
+
+        int i = left;
+
+        for (int j = left; j <= right; ++ j) {
+            if (arr[j] <= arr[right]) {
+                temp = arr[i];
+                arr[i ++] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        if (i - 1 == k) {
+            return arr[k];
+        }
+
+        return i - 1 > k ? quickSelect(arr, k, left, i - 2) : quickSelect(arr, k, i, right);
     }
 
 }

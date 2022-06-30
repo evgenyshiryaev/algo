@@ -21,20 +21,34 @@ public class SortTest {
     @Test
     public void allSortsTest() {
         for (int[] arr : ARRAYS) {
-            test(Sort::insertionSort, Arrays.copyOf(arr, arr.length));
-            test(Sort::mergeSort, Arrays.copyOf(arr, arr.length));
-            test(Sort::countSort, Arrays.copyOf(arr, arr.length));
+            sortTest(Sort::insertionSort, Arrays.copyOf(arr, arr.length));
+            sortTest(Sort::mergeSort, Arrays.copyOf(arr, arr.length));
+            sortTest(Sort::countSort, Arrays.copyOf(arr, arr.length));
+            sortTest(Sort::quickSort, Arrays.copyOf(arr, arr.length));
         }
     }
 
 
-    private static void test(Consumer<int[]> sort, int[] arr) {
+    private static void sortTest(Consumer<int[]> sort, int[] arr) {
         int[] expected = Arrays.copyOf(arr, arr.length);
         Arrays.sort(expected);
 
         sort.accept(arr);
 
         Assertions.assertArrayEquals(expected, arr);
+    }
+
+
+    @Test
+    public void quickSelectTest() {
+        int[] arr = {1, -10, 66, -159, 588, 29};
+
+        Assertions.assertEquals(-159, Sort.quickSelect(arr, 0));
+        Assertions.assertEquals(-10, Sort.quickSelect(arr, 1));
+        Assertions.assertEquals(1, Sort.quickSelect(arr, 2));
+        Assertions.assertEquals(29, Sort.quickSelect(arr, 3));
+        Assertions.assertEquals(66, Sort.quickSelect(arr, 4));
+        Assertions.assertEquals(588, Sort.quickSelect(arr, 5));
     }
 
 }
