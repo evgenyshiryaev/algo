@@ -11,6 +11,7 @@ public class KnuthMorrisPrattTest {
         Assertions.assertArrayEquals(new int[] {0}, KnuthMorrisPratt.find("dummy", "dum"));
         Assertions.assertArrayEquals(new int[] {1}, KnuthMorrisPratt.find("dummy", "um"));
         Assertions.assertArrayEquals(new int[] {}, KnuthMorrisPratt.find("dummy", "umy"));
+        Assertions.assertArrayEquals(new int[] {3}, KnuthMorrisPratt.find("dummy", "my"));
         Assertions.assertArrayEquals(new int[] {2, 3}, KnuthMorrisPratt.find("dummy", "m"));
 
         Assertions.assertArrayEquals(new int[] {3}, KnuthMorrisPratt.find("SuperLongString", "erLo"));

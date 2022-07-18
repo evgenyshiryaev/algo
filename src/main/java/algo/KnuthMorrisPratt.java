@@ -5,11 +5,9 @@ import java.util.List;
 
 import algo.utils.Utils;
 
+
 // http://e-maxx.ru/algo/prefix_function
 public class KnuthMorrisPratt {
-
-    private static final char DELIMITER = (char)0;
-
 
     // O(n) / O(n)
     public static int[] getPrefixFuntion(String s) {
@@ -34,22 +32,27 @@ public class KnuthMorrisPratt {
     }
 
 
-    // O(s + t) / O(s + t)
+    // O(s + t) / O(t)
     public static int[] find(String s, String t) {
         int T = t.length();
         if (T == 0) {
             return new int[] {};
         }
 
-        String s1 = String.format("%s%c%s", t, DELIMITER, s);
-        int[] prefix = getPrefixFuntion(s1);
+        int[] prefix = getPrefixFuntion(t);
 
         List<Integer> result = new ArrayList<>();
+        int j = 0;
 
-        int start = 2 * T;
-        for (int i = start; i < s1.length(); ++ i) {
-            if (prefix[i] == T) {
-                result.add(i - start);
+        for (int i = 0; i < s.length(); ++ i) {
+            char c = s.charAt(i);
+
+            while (j == T || (j > 0 && c != t.charAt(j))) {
+                j = prefix[j - 1];
+            }
+
+            if (c == t.charAt(j) && ++ j == T) {
+                result.add(i + 1 - T);
             }
         }
 
