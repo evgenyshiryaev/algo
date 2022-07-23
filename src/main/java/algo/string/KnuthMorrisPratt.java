@@ -1,4 +1,4 @@
-package algo;
+package algo.string;
 
 import java.util.ArrayList;
 import java.util.List;

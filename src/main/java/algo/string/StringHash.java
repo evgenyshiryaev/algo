@@ -1,4 +1,4 @@
-package algo;
+package algo.string;
 
 import algo.algebra.ModularMultiplicativeInverse;
 
