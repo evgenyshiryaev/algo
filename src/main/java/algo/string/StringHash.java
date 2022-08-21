@@ -2,6 +2,7 @@ package algo.string;
 
 import algo.algebra.ModularMultiplicativeInverse;
 
+
 // https://cp-algorithms.com/string/string-hashing.html
 public class StringHash {
 
@@ -9,29 +10,29 @@ public class StringHash {
     private static final int P = 31;
 
     // 10^9 + 1
-    private static final int M = 1000000009;
+    private static final int M = 1_000_000_009;
 
     private static final int P_INV = ModularMultiplicativeInverse.euclidMMI(P, M);
 
-    private static int pPowMax;
+    private static long pPowMax;
 
 
     public static int polynomialRollingHash(char[] s, int start, int end) {
-        int hash = 0;
-        int pPow = 1;
+        long hash = 0L;
+        long pPow = 1L;
 
         for (int i = start; i < end; ++ i) {
             pPowMax = pPow;
-            hash = (hash + s[i] * pPow) % M;
+            hash = (hash + pPow * s[i]) % M;
             pPow = (pPow * P) % M;
         }
 
-        return hash;
+        return (int)hash;
     }
 
 
     public static int polynomialRollingHash(int oldHash, char oldChar, char newChar) {
-        return (int)(((1L * (oldHash - oldChar) * P_INV) % M + newChar * pPowMax) % M);
+        return (int)((((1L * M  + oldHash - oldChar) * P_INV) % M + pPowMax * newChar) % M);
     }
 
 }
