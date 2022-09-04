@@ -46,7 +46,7 @@ public class MonotonicStack {
         maxs[0] = nums[s[si]];
 
         for (int i = m; i < N; ++ i) {
-            while (si < sj && s[si] <= i - m) {
+            if (si < sj && s[si] <= i - m) {
                 ++ si;
             }
             while (si < sj && nums[i] >= nums[s[sj - 1]]) {
