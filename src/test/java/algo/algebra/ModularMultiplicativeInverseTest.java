@@ -13,6 +13,16 @@ public class ModularMultiplicativeInverseTest {
 
 
     @Test
+    public void euclidMMIsTest() {
+        int[] mmis = ModularMultiplicativeInverse.euclidMMIs(9);
+
+        for (int i = 1; i < 9; ++ i) {
+            Assertions.assertEquals(ModularMultiplicativeInverse.euclidMMI(i, 9), mmis[i]);
+        }
+    }
+
+
+    @Test
     public void divideModTest() {
         Assertions.assertEquals(14, ModularMultiplicativeInverse.euclidMMI(5, 23));
         Assertions.assertEquals(2, ModularMultiplicativeInverse.divideMod(10, 5, 23));

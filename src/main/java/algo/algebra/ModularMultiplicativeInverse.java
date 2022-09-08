@@ -7,13 +7,27 @@ import java.util.concurrent.atomic.AtomicInteger;
 // for (a, m) find b, so a * b = 1 mod m
 public class ModularMultiplicativeInverse {
 
+    // O(log m)
     public static int euclidMMI(int a, int m) {
         AtomicInteger x = new AtomicInteger();
         AtomicInteger y = new AtomicInteger();
 
         int g = Euclid.gcdExt(a, m, x, y);
 
-        return g != 1 ? -1 : (x.get() % m + m) % m;
+        return g != 1 ? 0 : (x.get() % m + m) % m;
+    }
+
+
+    // O(m)
+    public static int[] euclidMMIs(int m) {
+        int[] r = new int[m];
+
+        r[1] = 1;
+        for (int i = 2; i < m; ++ i) {
+            r[i] = (m - (m / i) * r[m % i] % m) % m;
+        }
+
+        return r;
     }
 
 
