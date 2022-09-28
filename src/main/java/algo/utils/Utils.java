@@ -1,5 +1,6 @@
 package algo.utils;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 
@@ -14,6 +15,15 @@ public class Utils {
         }
 
         return result;
+    }
+
+
+    public static void print(Collection<int[]> list) {
+        for (int[] a : list) {
+            System.out.print(Arrays.toString(a));
+            System.out.print(", ");
+        }
+        System.out.println();
     }
 
 }

@@ -15,4 +15,10 @@ public class UtilsTest {
         Assertions.assertArrayEquals(new int[] {5, 55, -40, 444}, Utils.toArray(list));
     }
 
+
+    @Test
+    public void printTest() {
+        Utils.print(List.of(new int[] {1, 2, 3}, new int[] {10, 9}));
+    }
+
 }
