@@ -52,4 +52,17 @@ public class EuclidTest {
         Assertions.assertEquals(2, y.get());
     }
 
+
+    @Test
+    public void diophantineTest() {
+        AtomicInteger x = new AtomicInteger();
+        AtomicInteger y = new AtomicInteger();
+
+        Assertions.assertTrue(Euclid.diophantine(100, x, -256, y, 36));
+        Assertions.assertEquals(-207, x.get());
+        Assertions.assertEquals(-81, y.get());
+
+        Assertions.assertFalse(Euclid.diophantine(100, x, -256, y, 37));
+    }
+
 }

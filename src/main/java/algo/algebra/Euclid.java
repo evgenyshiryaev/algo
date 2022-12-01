@@ -35,4 +35,31 @@ public class Euclid {
         return d;
     }
 
+
+    // http://e-maxx.ru/algo/diofant_2_equation
+    // a * x + b * y = c
+    public static boolean diophantine(int a, AtomicInteger x, int b, AtomicInteger y, int c) {
+        int g = gcdExt(Math.abs(a), Math.abs(b), x, y);
+        if (c % g != 0) {
+            return false;
+        }
+
+        int x0 = x.get();
+        int y0 = y.get();
+
+        x0 *= c / g;
+        y0 *= c / g;
+        if (a < 0) {
+            x0 *= -1;
+        }
+        if (b < 0) {
+            y0 *= -1;
+        }
+
+        x.set(x0);
+        y.set(y0);
+
+        return true;
+    }
+
 }
