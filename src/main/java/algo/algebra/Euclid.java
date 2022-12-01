@@ -1,12 +1,18 @@
 package algo.algebra;
 
+import java.math.BigInteger;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // http://e-maxx.ru/algo/euclid_algorithm
 public class Euclid {
 
     public static int gcd(int a, int b) {
-        return b != 0 ? gcd (b, a % b) : a;
+        return b != 0 ? gcd(b, a % b) : a;
+    }
+
+
+    public static BigInteger gcd(BigInteger a, BigInteger b) {
+        return b.signum() != 0 ? gcd(b, a.mod(b)) : a;
     }
 
 

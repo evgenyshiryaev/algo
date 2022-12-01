@@ -1,5 +1,6 @@
 package algo.algebra;
 
+import java.math.BigInteger;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +15,31 @@ public class EuclidTest {
         Assertions.assertEquals(3, Euclid.gcd(12, 9));
         Assertions.assertEquals(100, Euclid.gcd(100, 0));
         Assertions.assertEquals(1, Euclid.gcd(13, 7));
+    }
+
+
+    @Test
+    public void gcdBigIntegerTest() {
+        Assertions.assertEquals(BigInteger.ONE, Euclid.gcd(BigInteger.ONE, BigInteger.ONE));
+        Assertions.assertEquals(BigInteger.TWO, Euclid.gcd(BigInteger.TWO, BigInteger.TWO));
+        Assertions.assertEquals(new BigInteger("3"), Euclid.gcd(new BigInteger("12"), new BigInteger("9")));
+        Assertions.assertEquals(new BigInteger("100"), Euclid.gcd(new BigInteger("100"), BigInteger.ZERO));
+        Assertions.assertEquals(BigInteger.ONE, Euclid.gcd(new BigInteger("13"), new BigInteger("7")));
+    }
+
+
+    @Test
+    public void gcdBigIntegerBigTest() {
+        BigInteger a = new BigInteger("10000000000000000000000000");
+        BigInteger b = new BigInteger("1267650600228229401496703205376");
+        BigInteger g = new BigInteger("33554432");
+        Assertions.assertEquals(g, Euclid.gcd(a, b));
+
+        BigInteger[] aDiv = a.divideAndRemainder(g);
+        BigInteger[] bDiv = b.divideAndRemainder(g);
+        Assertions.assertEquals(0, aDiv[1].signum());
+        Assertions.assertEquals(0, bDiv[1].signum());
+        Assertions.assertEquals(BigInteger.ONE, Euclid.gcd(aDiv[0], bDiv[0]));
     }
 
 
