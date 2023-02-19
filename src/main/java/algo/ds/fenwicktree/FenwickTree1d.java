@@ -50,17 +50,17 @@ public class FenwickTree1d {
     // for MIN - only decr
     // for MAX - only incr
 
-    public void update(int index, int val) {
+    public void update(int index, int diff) {
         for (int i = index; i < tree.length; i = i | (i + 1)) {
             switch (type) {
                 case SUM:
-                    tree[i] += val;
+                    tree[i] += diff;
                     break;
                 case MIN:
-                    tree[i] = Math.min(tree[i], val);
+                    tree[i] = Math.min(tree[i], diff);
                     break;
                 case MAX:
-                    tree[i] = Math.max(tree[i], val);
+                    tree[i] = Math.max(tree[i], diff);
                     break;
             }
         }
