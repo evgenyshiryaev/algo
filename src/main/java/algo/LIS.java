@@ -1,7 +1,5 @@
 package algo;
 
-import java.util.Arrays;
-
 /**
  * Longest Increasing Subsequence.
  * <br>See https://leetcode.com/problems/longest-increasing-subsequence/.
@@ -42,7 +40,6 @@ public class LIS {
             lis[length --] = nums[pos];
             pos = prev[pos];
         }
-//        System.out.println(Arrays.toString(lis));
         return lis;
     }
 
@@ -57,15 +54,22 @@ public class LIS {
         int length = 0;
 
         for (int i = 0; i < N; ++ i) {
-            int j = Arrays.binarySearch(d, 0, length, nums[i]);
-            if (j < 0) {
-                j = -(j + 1);
+            int l = 0;
+            int r = length;
+            while (l < r) {
+                int m = l + (r - l) / 2;
+                if (nums[i] > d[m]) { // >= if non-decreasing sequence
+                    l = m + 1;
+                } else {
+                    r = m;
+                }
             }
 
-            d[j] = nums[i];
-            pos[j] = i;
-            prev[i] = j == 0 ? -1 : pos[j - 1];
-            if (j == length) {
+
+            d[l] = nums[i];
+            pos[l] = i;
+            prev[i] = l == 0 ? -1 : pos[l - 1];
+            if (l == length) {
                 ++ length;
             }
         }
@@ -76,7 +80,6 @@ public class LIS {
             lis[length --] = nums[p];
             p = prev[p];
         }
-//        System.out.println(Arrays.toString(lis));
         return lis;
     }
 
