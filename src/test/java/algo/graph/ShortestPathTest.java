@@ -1,6 +1,7 @@
 package algo.graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -36,7 +37,7 @@ public class ShortestPathTest {
 
     @Test
     public void bellmanFordTest() {
-        int[][] graph = new int[][] {
+        int[][] graph = {
             {0, 1, 1}, {0, 2, 10}, {0, 4, 20},
             {1, 2, 5}, {1, 3, 2},
             {2, 4, 6},
@@ -50,9 +51,28 @@ public class ShortestPathTest {
 
     @Test
     public void bellmanFordNegativeCycleTest() {
-        int[][] graph = new int[][] {{0, 1, 1}, {1, 2, -1}, {2, 1, -1}};
-
+        int[][] graph = {{0, 1, 1}, {1, 2, -1}, {2, 1, -1}};
         Assertions.assertNull(ShortestPath.bellmanFord(graph, 3, 0));
+    }
+
+
+    @Test
+    public void floydWarshallTest() {
+        int[][] graph = {
+                {0,                 1,                 10,                Integer.MAX_VALUE, 20},
+                {Integer.MAX_VALUE, 0,                 5,                 2,                 Integer.MAX_VALUE},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, 0,                 Integer.MAX_VALUE, 6},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, 0,                 15},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, 6,                 15,                0}};
+        ShortestPath.floydWarshall(graph);
+
+        int[][] dist = {
+                {0,                 1,                 6, 3, 12},
+                {Integer.MAX_VALUE, 0,                 5, 2, 11},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, 0, 21, 6},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, 21, 0, 15},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, 6, 15, 0}};
+        Assertions.assertTrue(Arrays.deepEquals(dist, graph));
     }
 
 }
