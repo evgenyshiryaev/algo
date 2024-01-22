@@ -1,9 +1,12 @@
 .gradle
 .idea
 .settings
+.vs
 bin
 build
+x64
 
 .classpath
 .gitattributes
 .project
+cpp.vcxproj.user
