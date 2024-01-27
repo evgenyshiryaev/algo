@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ds\priority_queue.cpp" />
+    <ClCompile Include="ds\graph.cpp" />
+    <ClCompile Include="ds\std.cpp" />
+    <ClCompile Include="ds\utils.cpp" />
     <ClCompile Include="solution.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
