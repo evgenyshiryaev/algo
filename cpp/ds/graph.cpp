@@ -7,9 +7,8 @@ using namespace std;
 #define topair(z) x=z%X,y=z/X
 #define g(y,x) g[frompair(y,x)]
 
-int _MOVES_HV[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
-int _MOVES_D[4][2] = {{1,1},{-1,-1},{1,-1},{-1,1}};
-int _MOVES_ALL[8][2] = {{0,1},{0,-1},{1,0},{-1,0},{1,1},{-1,-1},{1,-1},{-1,1}};
+int MOVES[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+int MOVES_ALL[8][2] = {{0,1},{0,-1},{1,0},{-1,0},{1,1},{-1,-1},{1,-1},{-1,1}};
 
 
 int graph_init() {
@@ -49,7 +48,7 @@ int graph_bfs() {
 			z = d.front();
 			d.pop_front();
 			topair(z);
-			for (int* move : _MOVES_HV) {
+			for (int* move : MOVES) {
 				y1 = y + move[0];
 				x1 = x + move[1];
 				z1 = frompair(y1, x1);

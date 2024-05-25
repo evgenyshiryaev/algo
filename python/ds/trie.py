@@ -13,7 +13,7 @@ class Node:
 
 @dataclasses.dataclass
 class Trie:
-    root: Node = Node()
+    root: Node = dataclasses.field(default_factory=Node)
 
     def insert(self, word: str):
         node = self.root

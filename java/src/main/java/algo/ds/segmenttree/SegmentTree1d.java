@@ -150,8 +150,7 @@ public class SegmentTree1d {
     private void updateTree(int treeI, int arrayI0, int arrayI1, int diff) {
         tree[treeI] += switch (type) {
             case SUM -> (arrayI1 - arrayI0 + 1) * diff;
-            case MIN -> diff;
-            case MAX -> diff;
+            case MIN, MAX -> diff;
             default -> throw new UnsupportedOperationException();
         };
     }

@@ -2,7 +2,10 @@
 #include <climits>
 #include <cstring>
 #include <iostream>
+#include <map>
+#include <numeric>
 #include <queue>
+#include <unordered_map>
 
 using namespace std;
 
@@ -14,20 +17,18 @@ typedef long long ll;
 #define sp0 << ' '
 #define sp sp0 <<
 #define nl << '\n'
-#define yes cout << "YES" nl; return
-#define no cout << "NO" nl; return
 
-void _solve();
+void solve();
 
-int _main() {
+int main() {
 	FASTio;
 	int t;
 	ci t;
-	while (t--) _solve();
+	while (t--) solve();
 	return 0;
 }
 
 
-void _solve() {
+void solve() {
 	
 }
