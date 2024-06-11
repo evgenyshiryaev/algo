@@ -1,5 +1,6 @@
 from sortedcontainers import SortedSet
-from utils.bits import INT_MAX
+
+INT_MAX = (1 << 32) - 1
 
 
 # http://e-maxx.ru/algo/dijkstra

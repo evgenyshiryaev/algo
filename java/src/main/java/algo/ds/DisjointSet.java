@@ -3,31 +3,28 @@ package algo.ds;
 // https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3843/
 public class DisjointSet {
 
-    private final int[] root;
+    private final int[] roots;
 
     // height of each vertex
-    private final int[] rank;
-
-    private int size;
+    private final int[] ranks;
 
 
     public DisjointSet(int size) {
-        root = new int[size];
-        rank = new int[size];
-        this.size = size;
+        roots = new int[size];
+        ranks = new int[size];
 
         for (int i = 0; i < size; ++ i) {
-            root[i] = i;
-            rank[i] = 1;
+            roots[i] = i;
+            ranks[i] = 1;
         }
     }
 
 
     public int find(int x) {
-        if (x == root[x]) {
+        if (x == roots[x]) {
             return x;
         }
-        return root[x] = find(root[x]);
+        return roots[x] = find(roots[x]);
     }
 
 
@@ -36,27 +33,20 @@ public class DisjointSet {
         int rootY = find(y);
 
         if (rootX != rootY) {
-            if (rank[rootX] > rank[rootY]) {
-                root[rootY] = rootX;
-            } else if (rank[rootX] < rank[rootY]) {
-                root[rootX] = rootY;
+            if (ranks[rootX] > ranks[rootY]) {
+                roots[rootY] = rootX;
+            } else if (ranks[rootX] < ranks[rootY]) {
+                roots[rootX] = rootY;
             } else {
-                root[rootY] = rootX;
-                ++ rank[rootX];
+                roots[rootY] = rootX;
+                ++ ranks[rootX];
             }
-
-            -- size;
         }
     }
 
 
     public boolean connected(int x, int y) {
         return find(x) == find(y);
-    }
-
-
-    public int size() {
-        return size;
     }
 
 }
