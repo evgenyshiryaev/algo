@@ -10,7 +10,7 @@ import algo.utils.Utils;
 public class KnuthMorrisPratt {
 
     // O(n) / O(n)
-    public static int[] getPrefixFuntion(String s) {
+    public static int[] getPrefixFunction(String s) {
         int S = s.length();
         int[] prefix = new int[S];
 
@@ -32,14 +32,35 @@ public class KnuthMorrisPratt {
     }
 
 
+    // O(s + t) / O(s + t)
+    public static int[] find0(String s, String t) {
+        int T = t.length();
+        if (T == 0) {
+            return new int[]{};
+        }
+
+        int[] prefix = getPrefixFunction(t + '#' + s);
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < s.length() - T + 1; ++ i) {
+            int j = i + 2 * T;
+            if (prefix[j] == T) {
+                result.add(i);
+            }
+        }
+
+        return Utils.toArray(result);
+    }
+
+
     // O(s + t) / O(t)
-    public static int[] find(String s, String t) {
+    public static int[] find1(String s, String t) {
         int T = t.length();
         if (T == 0) {
             return new int[] {};
         }
 
-        int[] prefix = getPrefixFuntion(t);
+        int[] prefix = getPrefixFunction(t);
 
         List<Integer> result = new ArrayList<>();
         int j = 0;
