@@ -1,8 +1,8 @@
 #include <iostream>
-#include <map>
 #include <queue>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 
 using namespace std;
 
@@ -23,7 +23,8 @@ int deque_main() {
 int priority_queue_main() {
 	int data[5] = {5, 9, 1, 4, 5};
 
-	priority_queue<int> qMax; // max on top
+	// max on top
+	priority_queue<int> qMax;
 	for (int n : data) qMax.push(n);
 	while (!qMax.empty()) {
 		cout << qMax.top() << " ";
@@ -31,11 +32,27 @@ int priority_queue_main() {
 	}
 	cout << '\n';
 
-	priority_queue<int, vector<int>, greater<int>> qMin; // min on top
+	// min on top
+	priority_queue<int, vector<int>, greater<int>> qMin;
 	for (int n : data) qMin.push(n);
 	while (!qMin.empty()) {
 		cout << qMin.top() << " ";
 		qMin.pop();
+	}
+	cout << '\n';
+
+	// custom struct
+	struct node {
+		int a, b;
+		bool operator<(const node& other) const {
+			return a < other.a;
+		}
+	};
+	priority_queue<node> qNode;
+	for (int n : data) qNode.push(node{n, -n});
+	while (!qNode.empty()) {
+		cout << qNode.top().a << ',' << qNode.top().b << " ";
+		qNode.pop();
 	}
 	cout << '\n';
 
@@ -63,6 +80,18 @@ int unordered_set_main() {
 	cout << '\n';
 	s.erase(0);
 	for (int e : s) cout << e << ' ';
+	cout << '\n';
+
+	return 0;
+}
+
+int vector_main() {
+	vector<int> v { 4, 19, 8 };
+	v.push_back(-69);
+	for (int e : v) cout << e << ' ';
+	cout << '\n';
+	sort(v.begin(), v.end());
+	for (int e : v) cout << e << ' ';
 	cout << '\n';
 
 	return 0;

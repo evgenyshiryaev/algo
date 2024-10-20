@@ -29,5 +29,8 @@
     <ClCompile Include="ds\utils.cpp">
       <Filter>Source Files\ds</Filter>
     </ClCompile>
+    <ClCompile Include="fast_power.cpp">
+      <Filter>Source Files\algebra</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
