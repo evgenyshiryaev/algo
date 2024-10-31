@@ -15,6 +15,9 @@
     <Filter Include="Source Files\algebra">
       <UniqueIdentifier>{f8045d16-909a-45f3-9ad2-c20efd58ef84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\other">
+      <UniqueIdentifier>{f3ee865b-a6f0-4cd8-a8f0-697c247a1730}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="solution.cpp">
@@ -29,8 +32,11 @@
     <ClCompile Include="ds\utils.cpp">
       <Filter>Source Files\ds</Filter>
     </ClCompile>
-    <ClCompile Include="fast_power.cpp">
+    <ClCompile Include="algebra\fast_power.cpp">
       <Filter>Source Files\algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="other\lis.cpp">
+      <Filter>Source Files\other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

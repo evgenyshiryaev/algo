@@ -48,8 +48,8 @@ public class LIS {
     public static int[] lisNlogN(int[] nums) {
         final int N = nums.length;
 
-        final int[] d = new int[N + 1]; // d[i] is last LIS num of length i
-        final int[] pos = new int[N + 1]; // index of last element of LIS length i last element
+        final int[] d = new int[N]; // d[i] is last LIS num of length i+1
+        final int[] pos = new int[N]; // index of last element of LIS length i last element
         final int[] prev = new int[N]; // prev[i] is index of prev num to nums[i]
         int length = 0;
 

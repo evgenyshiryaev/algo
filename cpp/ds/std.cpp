@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <set>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -59,10 +60,22 @@ int priority_queue_main() {
 	return 0;
 }
 
+int set_main() {
+	set<int> s { 0, 3, 9, 3, 5 };
+	s.insert(0), s.insert(4);
+	for (int e : s) cout << e << ' ';
+	cout << '\n';
+	cout << "min=" << *s.begin() << " max=" << *s.rbegin();
+
+	return 0;
+}
+
 int unordered_map_main() {
 	unordered_map<int, int> m;
 	m[0] = 10, m[2] = 5;
 	cout << m.count(0) << ' ' << m.count(1) << '\n';
+	cout << 0 << '=' << (m.find(0) == m.end() ? -1 : m.find(0)->second) << '\n';
+	cout << 0 << '=' << (m.find(1) == m.end() ? -1 : m.find(1)->second) << '\n';
 	for (const auto& e : m) cout << e.first << ' ' << e.second << ' ';
 	cout << '\n';
 	m.erase(0);

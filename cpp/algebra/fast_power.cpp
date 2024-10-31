@@ -1,4 +1,4 @@
-static int fast_power(long long a, int b, int div) {
+int fast_power(long long a, int b, int div) {
     long long r = 1;
     while (b) {
         if (b & 1) r = (r * a) % div;
