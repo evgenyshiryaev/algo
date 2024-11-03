@@ -18,6 +18,9 @@
     <Filter Include="Source Files\other">
       <UniqueIdentifier>{f3ee865b-a6f0-4cd8-a8f0-697c247a1730}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\string">
+      <UniqueIdentifier>{e0e561fe-5de7-4047-a218-c8c4bd559dcf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="solution.cpp">
@@ -37,6 +40,15 @@
     </ClCompile>
     <ClCompile Include="other\lis.cpp">
       <Filter>Source Files\other</Filter>
+    </ClCompile>
+    <ClCompile Include="string\kmp.cpp">
+      <Filter>Source Files\string</Filter>
+    </ClCompile>
+    <ClCompile Include="string\z.cpp">
+      <Filter>Source Files\string</Filter>
+    </ClCompile>
+    <ClCompile Include="string\hash.cpp">
+      <Filter>Source Files\string</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
