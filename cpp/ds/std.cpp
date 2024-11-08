@@ -75,7 +75,9 @@ int unordered_map_main() {
 	m[0] = 10, m[2] = 5;
 	cout << m.count(0) << ' ' << m.count(1) << '\n';
 	cout << 0 << '=' << (m.find(0) == m.end() ? -1 : m.find(0)->second) << '\n';
-	cout << 0 << '=' << (m.find(1) == m.end() ? -1 : m.find(1)->second) << '\n';
+	cout << 0 << '=' << (!m.contains(0) ? -1 : m[0]) << '\n';
+	cout << 1 << '=' << (m.find(1) == m.end() ? -1 : m.find(1)->second) << '\n';
+	cout << 1 << '=' << (!m.contains(1) ? -1 : m[1]) << '\n';
 	for (const auto& e : m) cout << e.first << ' ' << e.second << ' ';
 	cout << '\n';
 	m.erase(0);

@@ -50,5 +50,8 @@
     <ClCompile Include="string\hash.cpp">
       <Filter>Source Files\string</Filter>
     </ClCompile>
+    <ClCompile Include="algebra\euclid.cpp">
+      <Filter>Source Files\algebra</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
