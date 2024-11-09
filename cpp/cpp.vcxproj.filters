@@ -21,15 +21,15 @@
     <Filter Include="Source Files\string">
       <UniqueIdentifier>{e0e561fe-5de7-4047-a218-c8c4bd559dcf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\graph">
+      <UniqueIdentifier>{42c5508a-c68d-4c84-8499-f087d2b8b25c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="solution.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ds\std.cpp">
-      <Filter>Source Files\ds</Filter>
-    </ClCompile>
-    <ClCompile Include="ds\graph.cpp">
       <Filter>Source Files\ds</Filter>
     </ClCompile>
     <ClCompile Include="ds\utils.cpp">
@@ -52,6 +52,12 @@
     </ClCompile>
     <ClCompile Include="algebra\euclid.cpp">
       <Filter>Source Files\algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="graph\bfs.cpp">
+      <Filter>Source Files\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="graph\shortest_path.cpp">
+      <Filter>Source Files\graph</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
