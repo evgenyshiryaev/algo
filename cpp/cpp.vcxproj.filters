@@ -24,6 +24,12 @@
     <Filter Include="Source Files\graph">
       <UniqueIdentifier>{42c5508a-c68d-4c84-8499-f087d2b8b25c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\geometry">
+      <UniqueIdentifier>{78653199-d943-49a8-ade5-7f20ab33afb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\comb">
+      <UniqueIdentifier>{2cb068f5-b78d-4afa-aff5-ff1bb871af66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="solution.cpp">
@@ -58,6 +64,18 @@
     </ClCompile>
     <ClCompile Include="graph\shortest_path.cpp">
       <Filter>Source Files\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="geometry\sweep_line.cpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="comb\inc_exc.cpp">
+      <Filter>Source Files\comb</Filter>
+    </ClCompile>
+    <ClCompile Include="algebra\primes.cpp">
+      <Filter>Source Files\algebra</Filter>
+    </ClCompile>
+    <ClCompile Include="other\bench.cpp">
+      <Filter>Source Files\other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

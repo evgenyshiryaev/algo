@@ -101,13 +101,26 @@ int unordered_set_main() {
 }
 
 int vector_main() {
+	auto print = [&](vector<int>& v) {
+		for (int e : v) cout << e << ' ';
+		cout << '\n';
+	};
+
 	vector<int> v { 4, 19, 8 };
 	v.push_back(-69);
-	for (int e : v) cout << e << ' ';
-	cout << '\n';
+	print(v);
+
 	sort(v.begin(), v.end());
-	for (int e : v) cout << e << ' ';
-	cout << '\n';
+	print(v);
+	sort(v.rbegin(), v.rend());
+	print(v);
+
+	// reversed
+	auto cmp = [&](int e0, int e1) {
+		return e0 > e1;
+	};
+	sort(v.begin(), v.end(), cmp);
+	print(v);
 
 	return 0;
 }

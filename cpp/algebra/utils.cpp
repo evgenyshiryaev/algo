@@ -2,7 +2,7 @@
 
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
 
 
 int binpow(ll a, int b, int mod) {
