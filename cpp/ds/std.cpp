@@ -1,3 +1,4 @@
+#include <functional>
 #include <iostream>
 #include <queue>
 #include <set>
@@ -22,7 +23,7 @@ int deque_main() {
 }
 
 int priority_queue_main() {
-	int data[5] = {5, 9, 1, 4, 5};
+	int data[] = {5, 9, 1, 4, 5};
 
 	// max on top
 	priority_queue<int> qMax;
@@ -54,6 +55,16 @@ int priority_queue_main() {
 	while (!qNode.empty()) {
 		cout << qNode.top().a << ',' << qNode.top().b << " ";
 		qNode.pop();
+	}
+	cout << '\n';
+
+	// custom cmp
+	priority_queue<int, vector<int>, function<bool(int, int)>> qCmp(
+		[&](int i0, int i1) { return data[i0] < data[i1]; });
+	for (int i = 0; i < 5; ++ i) qCmp.push(i);
+	while (!qCmp.empty()) {
+		cout << qCmp.top() << '/' << data[qCmp.top()] << " ";
+		qCmp.pop();
 	}
 	cout << '\n';
 

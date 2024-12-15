@@ -77,5 +77,11 @@
     <ClCompile Include="other\bench.cpp">
       <Filter>Source Files\other</Filter>
     </ClCompile>
+    <ClCompile Include="graph\euler_path.cpp">
+      <Filter>Source Files\graph</Filter>
+    </ClCompile>
+    <ClCompile Include="ds\monotonic.cpp">
+      <Filter>Source Files\ds</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
