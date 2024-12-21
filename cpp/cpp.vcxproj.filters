@@ -83,5 +83,8 @@
     <ClCompile Include="ds\monotonic.cpp">
       <Filter>Source Files\ds</Filter>
     </ClCompile>
+    <ClCompile Include="graph\topological_sorting.cpp">
+      <Filter>Source Files\graph</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
