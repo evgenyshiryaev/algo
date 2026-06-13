@@ -89,5 +89,8 @@
     <ClCompile Include="graph\lca_binary_lifting.cpp">
       <Filter>Source Files\graph</Filter>
     </ClCompile>
+    <ClCompile Include="ds\segmenttree1d.cpp">
+      <Filter>Source Files\ds</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
