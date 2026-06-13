@@ -25,7 +25,7 @@ public class SegmentTree1d {
         tree = new int[size << 2];
         lazy = new int[size << 2];
 
-        build(1, array, 0, array.length - 1);
+        if (size > 0) build(1, array, 0, array.length - 1);
 //        System.out.println(java.util.Arrays.toString(tree));
     }
 
