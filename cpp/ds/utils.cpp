@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -30,6 +31,14 @@ void print_2d_array(char* a, int Y, int X) {
 	int i = 0;
 	for (int y = 0; y < Y; ++y) {
 		for (int x = 0; x < X; ++x) cout << a[i++];
+		cout << '\n';
+	}
+}
+
+void print_2d_array(vector<vector<int>>& a) {
+	int Y = a.size(), X = a[0].size();
+	for (int y = 0; y < Y; ++y) {
+		for (int x = 0; x < X; ++x) cout << a[y][x] << ' ';
 		cout << '\n';
 	}
 }

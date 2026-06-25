@@ -29,3 +29,14 @@ void factCount(int n, int mod) {
 int mmi(int a, int mod) {
     return binpow(a, mod - 2, mod);
 }
+
+vector<vector<int>> multMat(vector<vector<int>>& m0, vector<vector<int>>& m1) {
+    int R0 = m0.size(), C0 = m0[0].size();
+    int R1 = m1.size(), C1 = m1[0].size();
+    vector<vector<int>> res(R0, vector<int>(C1));
+    for (int i = 0; i < R0; ++ i)
+        for (int j = 0; j < C1; ++ j)
+            for (int k = 0; k < R1; ++ k)
+                res[i][j] += m0[i][k] * m1[k][j];
+    return res;
+}
