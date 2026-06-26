@@ -101,5 +101,8 @@
     <ClCompile Include="ds\sparsetable.cpp">
       <Filter>Source Files\ds</Filter>
     </ClCompile>
+    <ClCompile Include="ds\fenwicktree1d.cpp">
+      <Filter>Source Files\ds</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
