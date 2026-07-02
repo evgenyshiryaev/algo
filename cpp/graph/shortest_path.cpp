@@ -42,7 +42,7 @@ vector<int> dijkstra0(vector<vector<int2>>& graph, int start) {
 vector<int> dijkstra1(vector<vector<int2>>& graph, int start) {
 	vector<int> dists(graph.size(), INT_MAX);
 	vector<int> parents(graph.size());
-	priority_queue<int2, vector<int2>, greater<int2>> nears;  // distance, vertex
+	priority_queue<int2, vector<int2>, greater<>> nears;  // distance, vertex
 
 	dists[start] = 0;
 	nears.push({0, start});
