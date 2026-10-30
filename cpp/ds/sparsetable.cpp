@@ -42,7 +42,7 @@ public:
 
     int rgq(int l, int r) { // gcd for [l, r)
         int t = log2_floor(r - l);
-        return min(st[t][l], st[t][r - (1 << t)]);
+        return gcd(st[t][l], st[t][r - (1 << t)]);
     }
 };
 

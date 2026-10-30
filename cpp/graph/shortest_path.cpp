@@ -37,6 +37,7 @@ vector<int> dijkstra0(vector<vector<int2>>& graph, int start) {
 
 
 // http://e-maxx.ru/algo/dijkstra_sparse
+// https://www.baeldung.com/cs/graph-number-of-shortest-paths
 // O(E * log(V)))
 // graph - vertex -> [vertex, weight]
 vector<int> dijkstra1(vector<vector<int2>>& graph, int start) {
@@ -54,8 +55,8 @@ vector<int> dijkstra1(vector<vector<int2>>& graph, int start) {
 		//if (from == target) break;
 
 		for (auto [to, len] : graph[from]) {
-			if (dists[from] + len < dists[to]) {
-				dists[to] = dists[from] + len;
+			if (dist + len < dists[to]) {
+				dists[to] = dist + len;
 				parents[to] = from;
 				nears.push({dists[to], to});
 			}
